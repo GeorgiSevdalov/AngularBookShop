@@ -1,0 +1,12 @@
+ul {
+    display:flex ;
+    flex-wrap: wrap;
+    list-style: none;
+}
+
+li {
+    text-overflow: ellipsis;
+    text-align: center;
+    width: 25%;
+    cursor: pointer;
+}
