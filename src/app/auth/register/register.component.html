@@ -1,20 +1,46 @@
 <div class="flex h-screen justify-center">
-    <form class="p-4 rounded-lg border m-auto">
+    <form (ngSubmit)="submit()" #myForm = 'ngForm' 
+        class="p-4 mt-20 rounded-lg border m-auto">
         <h1 class="text-center text-xl">Register</h1>
         <div class="my-5 w-full">
             <label for="email">Email</label>
-            <input type="email" id="" class="p-2 border rounded w-full" placeholder="Email">
+            <input type="email" id="email" 
+            class="p-2 border rounded w-full" 
+            placeholder="Email Address" 
+            [(ngModel)]="form.email"
+            name="email" #email = "ngModel" required>
+        </div>
+        <div *ngIf="email.invalid && (email.dirty || email.touched)" class="p-2 bg-red-300 text-red-700 rounded">
+            Email field must be valid!
         </div>
         <div class="my-5 w-full">
             <label for="password">Password</label>
-            <input type="password" id="" class="p-2 border rounded w-full" placeholder="Password">
+            <input type="password" id="password" 
+            class="p-2 border rounded w-full" 
+            placeholder="Password" 
+            [(ngModel)]="form.password" 
+            name="password" #password = "ngModel"
+            required>
+        </div>
+        <div *ngIf="password.invalid && (password.dirty || password.touched)" class="p-2 bg-red-300 text-red-700 rounded">
+            Password field must be valid!
         </div>
         <div class="my-5 w-full">
-            <label for="confirmPassword">Confirm Password</label>
-            <input type="confirmPassword" id="" class="p-2 border rounded w-full" placeholder="Confirm Password">
+            <label for="confirm_password">Confirm Password</label>
+            <input type="confirm_password" id="confirm_password" 
+            class="p-2 border rounded w-full" 
+            placeholder="Confirm Password"
+            [(ngModel)]="form.confirm_password" 
+            name="confirm_password"
+            #confirm_password = "ngModel" required>
+        </div>
+        <div *ngIf="confirm_password.invalid && (confirm_password.dirty || confirm_password.touched)" class="p-2 bg-red-300 text-red-700 rounded">
+            Confirm Password field must be valid!
         </div>
         <div class="my-5 w-full">
-            <input type="submit" class="p-2 rounded w-full bg-purple-500 text-white hover:bg-purple-300" placeholder="Confirm Password">
+            <input type="submit" 
+            [disabled]="myForm.form.invalid"
+            class="p-2 rounded w-full bg-purple-700 text-white hover:bg-purple-500" placeholder="Confirm Password">
         </div>
     </form>
 </div>

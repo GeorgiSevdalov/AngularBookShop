@@ -1,16 +1,33 @@
 <div class="flex h-screen justify-center">
-    <form class="p-4 rounded-lg border m-auto">
+    <form (ngSubmit)="submit()" #myForm = 'ngForm'
+    class="p-4 rounded-lg border m-auto">
         <h1 class="text-center text-xl">Login</h1>
         <div class="my-5 w-full">
             <label for="email">Email</label>
-            <input type="email" id="email" class="p-2 rounded w-full border" placeholder="Email Address">
+            <input type="email" id="email" 
+            class="p-2 rounded w-full border" 
+            placeholder="Email Address" 
+            [(ngModel)]="form.email" name="email" #email = "ngModel" required>
+        </div>
+        <div *ngIf="email.invalid && (email.dirty || email.touched)" 
+        class="p-2 bg-red-300 text-red-700 rounded">
+            Email field must be valid!
         </div>
         <div class="my-5 w-full">
             <label for="password">Password</label>
-            <input type="password" id="password" class="p-2 rounded w-full border" placeholder="Password">
+            <input type="password" id="password" 
+            class="p-2 rounded w-full border" 
+            placeholder="Password" 
+            [(ngModel)]="form.password" name="password" #password = "ngModel" required>
+        </div>
+        <div *ngIf="password.invalid && (password.dirty || password.touched)" 
+        class="p-2 bg-red-300 text-red-700 rounded">
+            Password field must be valid!
         </div>
         <div class="my-5 w-full">
-            <input type="submit" class="p-2 w-full bg-purple-500 text-white hover:bg-purple-300 rounded">
+            <input type="submit" 
+            [disabled]="myForm.form.invalid"
+            class="p-2 w-full bg-purple-700 text-white hover:bg-purple-500 rounded">
         </div>
     </form>
 </div>
