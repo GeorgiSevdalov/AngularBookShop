@@ -2,6 +2,7 @@
 <div *ngIf="getCart().length > 0">
     <div *ngFor="let book of getCart()">
         <p class="my-4 text-2xl">{{ book.name }}</p>
+        <button class="p-2 w-full bg-yellow-400 hover:bg-yellow-700 text-black">remove from cart</button>
     </div>
 </div>
 <div *ngIf="getCart().length === 0">No books in your cart</div>
